@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const UserProfile = () => {
+
+  const user = useSelector(state => state.userReducer.user)
+
+
   return (
     <div className="auth-wrapper">
       <div className="auth-inner">
@@ -12,10 +17,10 @@ const UserProfile = () => {
             width="150"
           />
           <div className="mt-3">
-            <h4></h4>
-            <p className="text-secondary mb-1"></p>
+            <h4>{user&&user.name}</h4>
+            <p className="text-secondary mb-1">{user&&user.email}</p>
             <p className="text-secondary mb-1">Full Stack Developer</p>
-            <p className="text-muted font-size-sm"></p>
+            <p className="text-muted font-size-sm">{user&&user.phone}</p>
             <button className="btn btn-primary">Follow</button>
             <button className="btn btn-outline-primary">Message</button>
           </div>
